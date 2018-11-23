@@ -26,8 +26,22 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 1 CODE HERE
+  height = prompt("Enter a number between and including 1 and 23");
+  // Makes sure the user enters a valid input
+  while (height < 1 || height > 23 && height % 1 = 0) {
+    height = prompt("It looks like that number wasn't between 1 and 23. Enter a number between and including 1 and 23");
+  }
+  for (let towerHeight = 0; towerHeight !==/*might need to change to less than*/ height / 2; towerHeight++) {
+    var p = document.getElementById("mario-easy-output");
+    p.innerHTML = "##" +
+  }
 
+
+  //towerHeight times # to add correct number of #'s
+  //towerHeight controls the number of rows
+  //Add height++ somewhere
+  //have to add <br/>
+  //put all of this in a loop
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
   ////////////////////////// DO NOT MODIFY

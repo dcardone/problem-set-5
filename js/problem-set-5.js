@@ -26,16 +26,44 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  height = prompt("Enter a number between and including 1 and 23");
-  // Makes sure the user enters a valid input
-  while (height < 1 || height > 23 && height % 1 = 0) {
-    height = prompt("It looks like that number wasn't between 1 and 23. Enter a number between and including 1 and 23");
-  }
-  for (let towerHeight = 0; towerHeight !==/*might need to change to less than*/ height / 2; towerHeight++) {
-    var p = document.getElementById("mario-easy-output");
-    p.innerHTML = "##" +
+  do {
+  height = prompt("Please enter an integer from 1 to 23:");
+} while ((Number.isInteger(height)) || (1 <= height && height <= 23) == false);
+
+  let marioResult = document.getElementById('mario-easy-output');
+  let x = 1;
+  let space1 = "&nbsp&nbsp";
+
+  while (x < (height - 1)) {
+    space1 = space1 + "&nbsp&nbsp";
+    x = x + 1;
   }
 
+  let hashtag = "##";
+  marioResult.innerHTML = space1 + hashtag + "<br/>";
+
+  let y = 1;
+  let z = 1;
+  let zSub = 1;
+  let space = "&nbsp&nbsp";
+
+  while (y < (height - 1)) {
+    hashtag = hashtag + "#";
+    while (z < (height - 2)) {
+      space = space + "&nbsp&nbsp";
+      z = z + 1;
+    }
+    marioResult.innerHTML += space + hashtag + "<br/>";
+    space = "&nbsp&nbsp";
+    z = zSub + 1;
+    zSub = zSub + 1;
+    y = y + 1;
+  }
+  while (y < height) {
+    hashtag = hashtag + "#";
+    marioResult.innerHTML += hashtag;
+    y = y + 1;
+  }
 
   //towerHeight times # to add correct number of #'s
   //towerHeight controls the number of rows
@@ -203,6 +231,36 @@ function hurricane() {
   ///////////////// DO NOT MODIFY
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
+
+  windspeed = prompt("Please enter a non-negative integer");
+
+  while (windspeed < 0 || windspeed % 1 != 0) {
+    windspeed = ("Hey stupid, enter a non-negative integer");
+  }
+
+  if (windspeed >= 157) {
+    let cat5 = document.getElementById("hurricane-output");
+    cat5.innerHTML = "Category 5";
+  } else if (windspeed >= 130) {
+    let cat4 = document.getElementById("hurricane-output");
+    cat4.innerHTML = "Category 4";
+  } else if (windspeed >= 111) {
+    let cat3 = document.getElementById("hurricane-output");
+    cat3.innerHTML = "Category 3";
+  } else if (windspeed >= 96) {
+    let cat2 = document.getElementById("hurricane-output");
+    cat2.innerHTML = "Category 2";
+  } else if (windspeed >= 74) {
+    let cat1 = document.getElementById("hurricane-output");
+    cat1.innerHTML = "Category 1";
+  } else if (windspeed >= 39) {
+    let tropStorm = document.getElementById("hurricane-output");
+    tropStorm.innerHTML = "Tropical Storm";
+  } else {
+    let p = document.getElementById("hurricane-output");
+    p.innerHTML = "Wind is not strong enough";
+  }
+
 
   ///////////////////////////////// DO NOT MODIFY
   check('hurricane', windspeed); // DO NOT MODIFY

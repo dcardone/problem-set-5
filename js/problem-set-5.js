@@ -196,6 +196,33 @@ function credit() {
 function guess() {
 
   // WRITE YOUR EXERCISE 4 CODE HERE
+  let answer = Math.floor((Math.random() * 1000) + 1);
+  console.log(answer);
+
+  let guess = prompt("Try to guess a randomly generated integer between 1 and 1000");
+
+  let i = 1;
+  while (guess != answer) {
+    if (guess > answer && guess > 0 && (Number.isInteger(guess) == true)) {
+      guess = prompt("That guess was too high, try again");
+      i++;
+    } else if (guess < answer && guess > 0 && (Number.isInteger(guess) == true)) {
+      guess = prompt("That was too low, try again");
+      i++;
+    } else {
+        guess = prompt("Stupid! I said put in an integer between 1 and 1000");
+    }
+  }
+  console.log(i);
+
+
+
+
+  // push each guess into a list and return the length of that list as the number of tries
+  //while guess !== something, repeat this sequnce, within sequence ask for guess
+  //in the loop, i will be used ot track the number of times the loop is repeated (number of tries)
+  // probably better to return i instead of putting the guesses into a list, might be more efficient
+  // let correct = Math.floor(Math.random() * 1000) + 1);
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY

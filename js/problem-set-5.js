@@ -291,6 +291,34 @@ function gymnastics() {
   let total = 0; //// DO NOT MODIFY
   let scores = []; // DO NOT MODIFY
   /////////////////// DO NOT MODIFY
+  let firstScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the first score"));
+  let secondScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the second score"));
+  let thirdScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the third score"));
+  let fourthScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the fourth score"));
+  let fifthScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the fifth score"));
+  let sixthScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the sixth score"));
+
+  scores.push(firstScore);
+  scores.push(secondScore);
+  scores.push(thirdScore);
+  scores.push(fourthScore);
+  scores.push(fifthScore);
+  scores.push(sixthScore);
+
+  total = firstScore + secondScore + thirdScore + fourthScore + fifthScore + sixthScore;
+
+  let minimum = Math.min(...scores);
+  let maximum = Math.max(...scores);
+
+  let discarded = document.getElementById("gymnastics-output");
+  discarded.innerHTML = "Discarded: " + minimum + ", " + maximum;
+
+  let minimumIndex = scores.indexOf(minimum);
+  let maximumIndex = scores.indexOf(maximum);
+
+  scores.splice(maximumIndex);
+  scores.splice(minimumIndex);
+  console.log(scores);
 
   /*
    * NOTE: The 'total' variable should be representative of the sum of all

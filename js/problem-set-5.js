@@ -26,16 +26,44 @@ function mario() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  height = prompt("Enter a number between and including 1 and 23");
-  // Makes sure the user enters a valid input
-  while (height < 1 || height > 23) {
-    height = prompt("It looks like that number wasn't between 1 and 23. Enter a number between and including 1 and 23");
-  }
-  for (let towerHeight = 0; towerHeight !==/*might need to change to less than*/ height / 2; towerHeight++) {
-    var p = document.getElementById("mario-easy-output");
-    p.innerHTML = "##" + 
+  do {
+  height = prompt("Please enter an integer from 1 to 23:");
+} while ((Number.isInteger(height)) || (1 <= height && height <= 23) == false);
+
+  let marioResult = document.getElementById('mario-easy-output');
+  let x = 1;
+  let space1 = "&nbsp&nbsp";
+
+  while (x < (height - 1)) {
+    space1 = space1 + "&nbsp&nbsp";
+    x = x + 1;
   }
 
+  let hashtag = "##";
+  marioResult.innerHTML = space1 + hashtag + "<br/>";
+
+  let y = 1;
+  let z = 1;
+  let zSub = 1;
+  let space = "&nbsp&nbsp";
+
+  while (y < (height - 1)) {
+    hashtag = hashtag + "#";
+    while (z < (height - 2)) {
+      space = space + "&nbsp&nbsp";
+      z = z + 1;
+    }
+    marioResult.innerHTML += space + hashtag + "<br/>";
+    space = "&nbsp&nbsp";
+    z = zSub + 1;
+    zSub = zSub + 1;
+    y = y + 1;
+  }
+  while (y < height) {
+    hashtag = hashtag + "#";
+    marioResult.innerHTML += hashtag;
+    y = y + 1;
+  }
 
   //towerHeight times # to add correct number of #'s
   //towerHeight controls the number of rows
@@ -168,6 +196,33 @@ function credit() {
 function guess() {
 
   // WRITE YOUR EXERCISE 4 CODE HERE
+  let answer = Math.floor((Math.random() * 1000) + 1);
+  console.log(answer);
+
+  let guess = prompt("Try to guess a randomly generated integer between 1 and 1000");
+
+  let i = 1;
+  while (guess != answer) {
+    if (guess > answer && guess > 0 && (Number.isInteger(guess) == true)) {
+      guess = prompt("That guess was too high, try again");
+      i++;
+    } else if (guess < answer && guess > 0 && (Number.isInteger(guess) == true)) {
+      guess = prompt("That was too low, try again");
+      i++;
+    } else {
+        guess = prompt("Stupid! I said put in an integer between 1 and 1000");
+    }
+  }
+  console.log(i);
+
+
+
+
+  // push each guess into a list and return the length of that list as the number of tries
+  //while guess !== something, repeat this sequnce, within sequence ask for guess
+  //in the loop, i will be used ot track the number of times the loop is repeated (number of tries)
+  // probably better to return i instead of putting the guesses into a list, might be more efficient
+  // let correct = Math.floor(Math.random() * 1000) + 1);
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
@@ -204,6 +259,36 @@ function hurricane() {
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
 
+  windspeed = prompt("Please enter a non-negative integer");
+
+  while (windspeed < 0 || windspeed % 1 != 0) {
+    windspeed = ("Hey stupid, enter a non-negative integer");
+  }
+
+  if (windspeed >= 157) {
+    let cat5 = document.getElementById("hurricane-output");
+    cat5.innerHTML = "Category 5";
+  } else if (windspeed >= 130) {
+    let cat4 = document.getElementById("hurricane-output");
+    cat4.innerHTML = "Category 4";
+  } else if (windspeed >= 111) {
+    let cat3 = document.getElementById("hurricane-output");
+    cat3.innerHTML = "Category 3";
+  } else if (windspeed >= 96) {
+    let cat2 = document.getElementById("hurricane-output");
+    cat2.innerHTML = "Category 2";
+  } else if (windspeed >= 74) {
+    let cat1 = document.getElementById("hurricane-output");
+    cat1.innerHTML = "Category 1";
+  } else if (windspeed >= 39) {
+    let tropStorm = document.getElementById("hurricane-output");
+    tropStorm.innerHTML = "Tropical Storm";
+  } else {
+    let p = document.getElementById("hurricane-output");
+    p.innerHTML = "Wind is not strong enough";
+  }
+
+
   ///////////////////////////////// DO NOT MODIFY
   check('hurricane', windspeed); // DO NOT MODIFY
   ///////////////////////////////// DO NOT MODIFY
@@ -233,6 +318,34 @@ function gymnastics() {
   let total = 0; //// DO NOT MODIFY
   let scores = []; // DO NOT MODIFY
   /////////////////// DO NOT MODIFY
+  let firstScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the first score"));
+  let secondScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the second score"));
+  let thirdScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the third score"));
+  let fourthScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the fourth score"));
+  let fifthScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the fifth score"));
+  let sixthScore = Number(prompt("Please enter a number between 1.0 and 10.0 as the sixth score"));
+
+  scores.push(firstScore);
+  scores.push(secondScore);
+  scores.push(thirdScore);
+  scores.push(fourthScore);
+  scores.push(fifthScore);
+  scores.push(sixthScore);
+
+  total = firstScore + secondScore + thirdScore + fourthScore + fifthScore + sixthScore;
+
+  let minimum = Math.min(...scores);
+  let maximum = Math.max(...scores);
+
+  let discarded = document.getElementById("gymnastics-output");
+  discarded.innerHTML = "Discarded: " + minimum + ", " + maximum;
+
+  let minimumIndex = scores.indexOf(minimum);
+  let maximumIndex = scores.indexOf(maximum);
+
+  scores.splice(maximumIndex);
+  scores.splice(minimumIndex);
+  console.log(scores);
 
   /*
    * NOTE: The 'total' variable should be representative of the sum of all

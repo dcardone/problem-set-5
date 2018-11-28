@@ -203,10 +203,10 @@ function guess() {
 
   let tries = 1;
   while (guess != answer) {
-    if (guess > answer && guess > 0 && Number.isInteger(guess)) {
+    if (guess > answer && guess > 0 && Number.isInteger(Number(guess))) {
       guess = prompt("That guess was too high, try again");
       tries++;
-    } else if (guess < answer && guess > 0 && Number.isInteger(guess)) {
+    } else if (guess < answer && guess > 0 && Number.isInteger(Number(guess))) {
       guess = prompt("That was too low, try again");
       tries++;
     } else {
@@ -399,7 +399,20 @@ function reportCard() {
   let quizTotal = 0; ////// DO NOT MODIFY
   let homeworkTotal = 0; // DO NOT MODIFY
   ///////////////////////// DO NOT MODIFY
+  let testInput = " ";
+  for (testTotal = 0; testInput == -1; testTotal += testInput) {
+    testInput = prompt("Enter a test score. When you have finished, please enter -1");
+  }
 
+  let quizInput = " ";
+  for (quizTotal = 0; quizInput == -1; quizTotal += quizInput) {
+    quizInput = prompt("Enter a quiz score. When you have finished, please enter -1");
+  }
+
+  let homeworkInput = 0;
+  for (homeworkTotal = 0; homework == -1; homeworkTotal += homeworkTotal) {
+    homework = prompt("Enter a homework grade. When you have finished, please enter -1");
+  }
 
   /*
    * NOTE: The 'testTotal', 'quizTotal', and 'homeworkTotal' variables
@@ -418,11 +431,9 @@ function reportCard() {
    *       representative of the number of tests, quizzes, and homework
    *       grades the user enters, respectively.
    */
-   let testInput = "";
-   for (let testTotal = 0; testInput == -1; testTotal += testInput) {
-     testInput = Number(prompt("Enter a test score. When you have finished, please enter -1"));
-   }
-   console.log(testTotal);
+
+
+
 
   /////////////////////// DO NOT MODIFY
   check('report-card', // DO NOT MODIFY

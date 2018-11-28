@@ -201,19 +201,22 @@ function guess() {
 
   let guess = prompt("Try to guess a randomly generated integer between 1 and 1000");
 
-  let i = 1;
+  let tries = 1;
   while (guess != answer) {
-    if (guess > answer && guess > 0 && (Number.isInteger(guess) == true)) {
+    if (guess > answer && guess > 0 && Number.isInteger(guess)) {
       guess = prompt("That guess was too high, try again");
-      i++;
-    } else if (guess < answer && guess > 0 && (Number.isInteger(guess) == true)) {
+      tries++;
+    } else if (guess < answer && guess > 0 && Number.isInteger(guess)) {
       guess = prompt("That was too low, try again");
-      i++;
+      tries++;
     } else {
         guess = prompt("Stupid! I said put in an integer between 1 and 1000");
     }
   }
-  console.log(i);
+  if (guess == answer) {
+    let correct = document.getElementById("guess-output");
+    correct.innerHTML = "Nice, you got it. It only took you " + tries + " tries!";
+  }
 
 
 
@@ -259,10 +262,10 @@ function hurricane() {
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
 
-  windspeed = prompt("Please enter a non-negative integer");
+  windspeed = prompt("Want to see some magic? Enter a positive windspeed as an integer and I'll tell you what it's categorized as.");
 
-  while (windspeed < 0 || windspeed % 1 != 0) {
-    windspeed = ("Hey stupid, enter a non-negative integer");
+  while (windspeed < 0 || !Number.isInteger(windspeed)) {
+    windspeed = prompt("Hey stupid! I said enter a non-negtive integer.");
   }
 
   if (windspeed >= 157) {
@@ -331,6 +334,9 @@ function gymnastics() {
   scores.push(fourthScore);
   scores.push(fifthScore);
   scores.push(sixthScore);
+//checks to see if first score is an integer
+  while (Numb)
+    firstScore = (Number.isInteger(firstScore))? firstScore = firstScore : prompt("Stupid! Enter a number between 1.0 and 10.0 as the first score");
 
   total = firstScore + secondScore + thirdScore + fourthScore + fifthScore + sixthScore;
 
@@ -394,6 +400,7 @@ function reportCard() {
   let homeworkTotal = 0; // DO NOT MODIFY
   ///////////////////////// DO NOT MODIFY
 
+
   /*
    * NOTE: The 'testTotal', 'quizTotal', and 'homeworkTotal' variables
    *       should be representative of the sum of the test scores, quiz
@@ -411,6 +418,11 @@ function reportCard() {
    *       representative of the number of tests, quizzes, and homework
    *       grades the user enters, respectively.
    */
+   let testInput = "";
+   for (let testTotal = 0; testInput == -1; testTotal += testInput) {
+     testInput = Number(prompt("Enter a test score. When you have finished, please enter -1"));
+   }
+   console.log(testTotal);
 
   /////////////////////// DO NOT MODIFY
   check('report-card', // DO NOT MODIFY

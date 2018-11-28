@@ -157,7 +157,30 @@ function credit() {
   //////////// DO NOT MODIFY
 
   // WRITE YOUR EXERCISE 3 CODE HERE
+  card = prompt("Enter a non-negative integer and I will tell you if it is a valid credit card number");
 
+  while (!Number.isInteger(Number(card)) || card < 0) {
+    card = prompt("Enter a non-negative integer");
+  }
+
+  length = card.length;
+
+  let product = 0;
+  for (let i = length - 2; i == length - 1 || i == length -2; i + 2) {
+    product += card.charAt(i) * 2;
+  }
+
+  console.log(product);
+
+  //have a loop where the digit being selected is a variable. Subtract 2 from the variable every time
+
+
+
+
+
+
+
+  //write seperate functions for each card, each having the requirements
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
    *       variable, do not modify it. If you find it necessary to manipulate
@@ -203,7 +226,7 @@ function guess() {
 
   let tries = 1;
   while (guess != answer) {
-    if (guess > answer && guess > 0 && Number.isInteger(Number(guess))) {
+    if (guess > answer && guess > 0  && guess <= 1000 && Number.isInteger(Number(guess))) {
       guess = prompt("That guess was too high, try again");
       tries++;
     } else if (guess < answer && guess > 0 && Number.isInteger(Number(guess))) {
@@ -264,7 +287,7 @@ function hurricane() {
 
   windspeed = prompt("Want to see some magic? Enter a positive windspeed as an integer and I'll tell you what it's categorized as.");
 
-  while (windspeed < 0 || !Number.isInteger(windspeed)) {
+  while (windspeed < 0 || !Number.isInteger(Number(windspeed)) || windspeed == " ") {
     windspeed = prompt("Hey stupid! I said enter a non-negtive integer.");
   }
 
